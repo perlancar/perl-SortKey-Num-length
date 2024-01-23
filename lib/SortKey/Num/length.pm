@@ -1,4 +1,4 @@
-package SortKey::Num::by_length;
+package SortKey::Num::length;
 
 use 5.010001;
 use strict;
@@ -31,15 +31,16 @@ sub gen_keygen {
 =head1 SYNOPSIS
 
  use Sort::Key qw(nkeysort);
- use SortKey::Num::by_length;
+ use SortKey::Num::length;
 
- my $keygen = SortKey::Num::by_length::gen_keygen;
- my @sorted = &nkeysort($keygen, "food", "foolish", "foo");
+ my $by_length = SortKey::Num::length::gen_keygen;
+ my @sorted = &nkeysort($by_length, "food", "foolish", "foo");
 
 
 =head1 DESCRIPTION
 
-This is just a demonstration module for L<SortKey>. You might just as well:
+This is just a demonstration module for L<SortKey>. You might just as well use
+Perl's builtin C<length()> directly:
 
  nkeysort { length shift } ...
 
