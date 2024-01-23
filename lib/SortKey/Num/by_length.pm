@@ -20,9 +20,7 @@ sub meta {
 sub gen_keygen {
     my %args = @_;
 
-    sub {
-        length $_[0];
-    };
+    \&CORE::length;
 }
 
 1;
@@ -36,9 +34,13 @@ sub gen_keygen {
  use SortKey::Num::by_length;
 
  my $keygen = SortKey::Num::by_length::gen_keygen;
- my @sorted = nkeysort($keygen, "food", "foolish", "foo");
+ my @sorted = &nkeysort($keygen, "food", "foolish", "foo");
 
 
 =head1 DESCRIPTION
+
+This is just a demonstration module for L<SortKey>. You might just as well:
+
+ nkeysort { length shift } ...
 
 =cut
